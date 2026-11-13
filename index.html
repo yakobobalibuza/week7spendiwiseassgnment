@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SpendWise - Manage your money, income and expenses.">
+  <title>SpendWise | Smart Finance Tracker</title>
+
+  <!-- CSS CONNECTION -->
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js">
+
+  </script>
+</head>
+<body style="background: #16a34a;">
+
+  <aside class="sidebar">
+    <h2 class="logo">Spend<span>Wise.</span></h2>
+
+    <nav>
+      <a href="#dashboard" class="active">▦ Dashboard</a>
+      <a href="#transactions">↔ Transactions</a>
+      <a href="#analytics">▥ Analytics</a>
+    </nav>
+
+    <p class="sidebar-note">Smart money. Better future.</p>
+  </aside>
+
+  <main class="main-content" id="dashboard">
+
+    <header>
+      <div>
+        <h1>Welcome to SpendWise!</h1>
+        <p>Track your money and make smarter financial decisions.</p>
+      </div>
+      <span class="date" id="today"></span>
+    </header>
+
+    <section class="summary">
+
+      <div class="stat-card balance">
+        <p>Total Balance</p>
+        <h2 id="balance">KES 3,195.00</h2>
+        <small>Your available balance</small>
+      </div>
+
+      <div class="stat-card">
+        <p>Total Income</p>
+        <h2 id="income">KES 5,000.00</h2>
+        <small>Money received</small>
+      </div>
+
+      <div class="stat-card">
+        <p>Total Expenses</p>
+        <h2 id="expenses">KES 1,805.00</h2>
+        <small>Money spent</small>
+      </div>
+
+    </section>
+
+    <section class="panel">
+      <h2>Add New Transaction</h2>
+
+      <form id="transactionForm">
+
+        <div class="form-grid">
+
+          <div>
+            <label for="description">Description</label>
+            <input id="description" type="text"
+              placeholder="e.g. Food shopping" required maxlength="60">
+          </div>
+
+          <div>
+            <label for="amount">Amount (KES)</label>
+            <input id="amount" type="number"
+              placeholder="e.g. 254" min="0.01"
+              step="0.01" required>
+          </div>
+
+          <div>
+            <label for="type">Transaction Type</label>
+            <select id="type">
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="category">Category</label>
+            <select id="category">
+              <option>Salary</option>
+              <option>Business</option>
+              <option>Food</option>
+              <option>Transport</option>
+              <option>Shopping</option>
+              <option>Education</option>
+              <option>Health</option>
+              <option>Entertainment</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="date">Date</label>
+            <input id="date" type="date" required>
+          </div>
+
+        </div>
+
+        <button type="submit">+ Add Transaction</button>
+
+      </form>
+    </section>
+
+    <section class="panel" id="transactions">
+
+      <div class="section-heading">
+        <h2>Recent Transactions</h2>
+        <span id="transactionCount">4 transactions</span>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody id="transactionList"></tbody>
+        </table>
+      </div>
+
+      <p id="emptyMessage">
+        No transactions yet. Add your first transaction!
+      </p>
+
+    </section>
+
+    <section class="panel" id="analytics">
+      <h2>Financial Overview</h2>
+      <p class="chart-description">
+        Compare your total income and expenses.
+      </p>
+
+      <div class="chart-container">
+        <canvas id="financeChart"></canvas>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 SpendWise. Manage your money wisely.</p>
+    </footer>
+
+  </main>
+
+  <!-- JAVASCRIPT CONNECTION -->
+  <script src="./script.js"></script>
+
+</body>
+</html>
